@@ -91,13 +91,4 @@ final class CartViewModelTest: XCTestCase {
         XCTAssertEqual(selectedItemsQuantity, 2 + 3)
     }
     
-    func testFetchProducts() {
-        let mockedNetwork = NetworkManagerMock()
-        let viewModel = CartViewModel(networkManager: mockedNetwork)
-        viewModel.fetchProducts()
-        
-        XCTAssertEqual(viewModel.allproducts?.count, 5)
-    }
-    
-    
 }

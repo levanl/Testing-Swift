@@ -35,7 +35,7 @@ final class CartViewModel {
     
     func fetchProducts() {
         
-        //        self.allproducts = ProductsResponse.dummyProducts
+        // self.allproducts = ProductsResponse.dummyProducts
         
         networkManager.fetchProducts(completion: { [weak self] products in
             switch products {
