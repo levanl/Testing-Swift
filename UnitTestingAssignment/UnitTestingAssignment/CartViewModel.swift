@@ -21,15 +21,23 @@ final class CartViewModel {
         selectedProducts.reduce(0.0) { $0 + Double($1.selectedQuantity ?? 0) * ($1.price ?? 0)  }
     }
     
+    var networkManager: NetworkManaging!
+    
+    init(networkManager: NetworkManaging) {
+        self.networkManager = networkManager
+    }
+    
+    init() {}
+    
     func viewDidLoad() {
         fetchProducts()
     }
     
     func fetchProducts() {
         
-        self.allproducts = ProductsResponse.dummyProducts
-
-        NetworkManager.shared.fetchProducts(completion: { [weak self] products in
+        //        self.allproducts = ProductsResponse.dummyProducts
+        
+        networkManager.fetchProducts(completion: { [weak self] products in
             switch products {
             case .success(let products):
                 self?.allproducts = products

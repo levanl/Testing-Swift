@@ -92,9 +92,11 @@ final class CartViewModelTest: XCTestCase {
     }
     
     func testFetchProducts() {
-        cartViewModel.fetchProducts()
+        let mockedNetwork = NetworkManagerMock()
+        let viewModel = CartViewModel(networkManager: mockedNetwork)
+        viewModel.fetchProducts()
         
-        XCTAssertNotNil(cartViewModel.allproducts)
+        XCTAssertEqual(viewModel.allproducts?.count, 5)
     }
     
     
